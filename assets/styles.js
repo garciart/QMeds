@@ -2,20 +2,20 @@ import { StyleSheet } from 'react-native'
 
 export default StyleSheet.create({
     "mainView": {
-        flex: 1,
-        justifyContent: 'space-evenly',
         alignItems: 'center',
-        backgroundColor: 'powderblue',
-        padding: 10
+        backgroundColor: 'white',
+        flex: 1,
+        justifyContent: 'center',
+        padding: 10,
     },
     "logo": {
+        borderColor: 'black',
+        borderWidth: 3,
         height: 300,
         width: 300,
-        borderWidth: 3,
-        borderColor: 'black'
     },
     "h1": {
+        fontSize: 30,
         fontWeight: 'bold',
-        fontSize: 30
     }
 });
