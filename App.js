@@ -2,47 +2,58 @@ import React, { Component } from 'react';
 import { Button, Image, ScrollView, Text, View } from 'react-native';
 import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
-import styles from './assets/styles'
+import styles from './assets/styles';
+import ScratchPage from './ScratchPage.js';
+import AboutPage from './AboutPage.js';
+
+function Spacer() {
+  return <View style={styles.spacer} />;
+}
 
 class App extends Component {
-  static navigationOptions = {
-    title: 'Welcome',
-  };
-  state = {
-    heading: false,
-    myState: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+  static navigationOptions = { title: 'Quick Maps!' };
 
+  constructor() {
+    super();
+    this.state = {
+
+    }
   }
-  updateState = () => {
-    this.state.heading = this.state.heading ? false : true;
-  }
+
   render() {
-    let headingStyle = this.state.heading ? styles.h1 : '';
     const { navigate } = this.props.navigation;
     return (
       <ScrollView>
         <View style={styles.mainView}>
           <Image source={require('./assets/qmaps_image_01.png')} style={styles.logo} />
+          <Spacer />
           <Text style={styles.h1}>Welcome to Quick Maps!</Text>
-          <Button
-            title="Press Me"
-            onPress={this.updateState} />
-          <Text style={headingStyle}>{this.state.myState}</Text>
-          <Button
-            title="Go to Game"
-            onPress={() => {
-              navigate('Game')
-            }} />
+          <Spacer />
+          <View style={styles.stretchButton}>
+            <Button
+              title="Open a Map"
+              onPress={() => { alert("You want to open a map!") }} />
+            <Spacer />
+            <Button
+              title="Download a Map"
+              onPress={() => { alert("You want to download a map!") }} />
+            <Spacer />
+            <Button
+              title="About"
+              onPress={() => { navigate('AboutPage') }} />
+            <Spacer />
+            <Button
+              title="Scratch Page"
+              onPress={() => { navigate('ScratchPage') }} />
+          </View>
         </View >
       </ScrollView>
     );
   }
 }
 
-class GameScreen extends Component {
-  static navigationOptions = {
-    title: 'Hello!',
-  };
+class Hello extends Component {
+  static navigationOptions = { title: 'Hello!' };
   render() {
     return (
       <View style={styles.mainView}>
@@ -54,7 +65,8 @@ class GameScreen extends Component {
 
 const AppNavigator = createStackNavigator({
   Home: { screen: App },
-  Game: { screen: GameScreen },
+  AboutPage: { screen: AboutPage },
+  ScratchPage: { screen: ScratchPage }
 });
 
 export default createAppContainer(AppNavigator);
