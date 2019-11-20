@@ -3,12 +3,9 @@ import { Button, Image, ScrollView, Text, View } from 'react-native';
 import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 import styles from './assets/styles';
-import ScratchPage from './ScratchPage.js';
+import OpenMapPage from './OpenMapPage.js';
 import AboutPage from './AboutPage.js';
-
-function Spacer() {
-  return <View style={styles.spacer} />;
-}
+import ScratchPage from './ScratchPage.js';
 
 class App extends Component {
   static navigationOptions = { title: 'Quick Maps!' };
@@ -25,23 +22,23 @@ class App extends Component {
     return (
       <ScrollView>
         <View style={styles.mainView}>
-          <Image source={require('./assets/qmaps_image_01.png')} style={styles.logo} />
-          <Spacer />
           <Text style={styles.h1}>Welcome to Quick Maps!</Text>
-          <Spacer />
-          <View style={styles.stretchButton}>
+          <View style={styles.spacer} />
+          <Image source={require('./assets/qmaps_image_01.png')} style={styles.logo} />
+          <View style={styles.spacer} />
+          <View style={[{width:"70%"}]}>
             <Button
               title="Open a Map"
-              onPress={() => { alert("You want to open a map!") }} />
-            <Spacer />
+              onPress={() => { navigate('OpenMapPage') }} />
+            <View style={styles.spacer} />
             <Button
               title="Download a Map"
               onPress={() => { alert("You want to download a map!") }} />
-            <Spacer />
+            <View style={styles.spacer} />
             <Button
               title="About"
               onPress={() => { navigate('AboutPage') }} />
-            <Spacer />
+            <View style={styles.spacer} />
             <Button
               title="Scratch Page"
               onPress={() => { navigate('ScratchPage') }} />
@@ -65,6 +62,7 @@ class Hello extends Component {
 
 const AppNavigator = createStackNavigator({
   Home: { screen: App },
+  OpenMapPage: { screen: OpenMapPage },
   AboutPage: { screen: AboutPage },
   ScratchPage: { screen: ScratchPage }
 });

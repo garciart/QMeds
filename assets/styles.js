@@ -1,4 +1,6 @@
-import { StyleSheet } from 'react-native'
+import { Dimensions, StyleSheet } from 'react-native'
+
+const win = Dimensions.get('window');
 
 export default StyleSheet.create({
     mainView: {
@@ -8,23 +10,37 @@ export default StyleSheet.create({
         justifyContent: 'center',
         padding: 20
     },
+    openMapView: {
+        flex: 1,
+        padding: 20
+    },
+    aboutView: {
+        backgroundColor: 'white',
+        flex: 1,
+        padding: 20
+    },
     logo: {
         borderColor: 'black',
         borderWidth: 3,
-        height: 300,
-        width: 300
+        // resizeMode: "contain",
+        height: win.width * .7,
+        width: win.width * .7
     },
     h1: {
-        fontSize: 30,
+        fontSize: 25,
         fontWeight: 'bold'
     },
-    stretchButtons: {
-        alignItems: 'stretch',
-        flex: 1,
-        flexDirection: 'column',
-        justifyContent: 'center'
+    item: {
+        padding: 10,
+        fontSize: 18,
     },
     spacer: {
         marginVertical: 6
+    },
+    hr: {
+        borderColor: 'black',
+        borderWidth: StyleSheet.hairlineWidth,
+        marginBottom: 5,
+        marginTop: 5
     }
 });
